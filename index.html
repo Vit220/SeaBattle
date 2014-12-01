@@ -414,7 +414,7 @@
 
     $(function() {
         $( ".shipsRemove" ).draggable({ revert: "invalid" });
-        $( $tableOne ).not('.deadZone').droppable({
+        $( $tableOne ).droppable({
             activeClass: "ui-state-default",
             hoverClass: "ui-state-hover",
             drop: function( event, ui ) {
@@ -431,7 +431,7 @@
 
     $(function() {
         $( ".shipsRemove8" ).draggable({ revert: "invalid" });
-        $( $tableOne).not('.deadZone').droppable({
+        $( $tableOne).droppable({
             activeClass: "ui-state-default",
             hoverClass: "ui-state-hover",
             drop: function( event, ui ) {
