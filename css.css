@@ -1,0 +1,326 @@
+
+body {
+    background-color: #FFFFEF;
+    background-image: linear-gradient(90deg, transparent 98px, #ED82AD 98px, #ED82AD 100px, transparent 100px),
+    linear-gradient(#eee 1px, transparent 0px),
+    linear-gradient(90deg, #eee 1px, transparent 0px);
+    background-size: 100% 100%, 20px 20px, 20px 20px;
+    background-position: 0 0, -1px -1px, -1px 1px;
+
+}
+
+#topic h1 {
+
+    position: fixed;
+    top: 10%;
+    left: 38%;
+}
+#topic p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 70%;
+    color: red;
+    position: fixed;
+    top: 10%;
+    left: 38%;
+
+}
+#topic a {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+    position: fixed;
+    top: 18%;
+    left: 38%;
+}
+
+/*.fireNext{
+    background: url(image/90.gif) no-repeat;
+}*/
+
+#playerOne {
+    position: absolute;
+    top: 28.6%;
+    left: 20%;
+}
+
+#playerOne .fire {
+    border: 1px solid #3355aa;
+    background: url(image/90.gif) no-repeat;
+    background-position: center center;
+    background-color: #FFFFEF;
+}
+
+#playerTwo {
+    position: absolute;
+    top: 28.6%;
+    left: 56.5%;
+}
+
+#playerTwo .fire {
+    border: 1px solid #3355aa;
+    background: url(image/90.gif) no-repeat !important;
+    background-position: center center;
+    background-color: #FFFFEF;
+
+
+}
+
+#logForSeaBattle{
+    position: absolute;
+    top: 28.6%;
+    left: 37.5%;
+    width: 250px;
+    height: 250px;
+    text-align: center;
+    overflow: auto;
+    /*background-color: #FFFFEF;*/
+
+}
+
+.PlayerField {
+    background-color: #FFFFEF;
+    position: absolute;
+    top: 28.6%;
+    left: 20.5%;
+
+    border-collapse: collapse;
+    width: 250px;
+    height: 250px;
+    table-layout: fixed;
+    text-align: center;
+    z-index: 10;
+}
+
+td {
+    border: 1px solid #3355aa;
+
+}
+p {
+    font-size:12px;
+}
+
+#playerOne .sheep {
+    border: 1px solid #3355aa;
+    /*bbackground-color: #FFFFEF;*/
+}
+
+#playerTwo .sheep {
+    border: 1px solid #3355aa;
+    background-color:#808080;
+}
+
+.deadZone {
+    background-color: #0077b3 !important;
+
+}
+
+.miss {
+    border: 1px solid #3355aa;
+    background: url(image/100.gif) no-repeat;
+    background-position: center center;
+
+}
+
+.afterGame {
+    border: 1px solid #3355aa;
+    background-color: green;
+}
+.colorBrown{
+    color: brown;
+}
+.colorCoral{
+    color: #0077b3;
+}
+
+.hide{
+
+    background-color: #FFFFEF !important;
+    background: url(image/hideShips.gif) no-repeat !important;
+    background-position: center center;
+
+}
+#button{
+    position: absolute;
+    top: 20.6%;
+    left: 22%;
+}
+
+.locationsRed {
+    background-color: #fe3456 !important;
+}
+/*.locations {
+    background-color: #FFFFEF !important;
+}*/
+
+.shipsRemove {
+    position: absolute;
+    top: 20.6%;
+    left: 12%;
+    border-collapse: collapse;
+    width: 75px;
+    height: 75px;
+
+}
+.shipsRemove8 {
+    position: absolute;
+    top: 40.6%;
+    left: 12%;
+    border-collapse: collapse;
+    width: 75px;
+    height: 75px;
+
+}
+
+.shipsRemove td, th {
+    border: 1px solid #ffffEf;
+}
+
+
+.four_1{
+    background: url(image/ship4_1right.gif) no-repeat;
+    background-position: center center;
+}
+.four_1left {
+    background: url(image/ship4_1left.gif) no-repeat;
+}
+.four_1up {
+    background: url(image/ship4_1up.gif) no-repeat;
+}
+.four_1down {
+    background: url(image/ship4_1down.gif) no-repeat;
+}
+
+
+.four_2{
+    background: url(image/ship4_2right.gif) no-repeat;
+    background-position: center center;
+}
+.four_2left {
+    background: url(image/ship4_2left.gif) no-repeat;
+}
+.four_2up {
+    background: url(image/ship4_2up.gif) no-repeat;
+}
+.four_2down {
+    background: url(image/ship4_2down.gif) no-repeat;
+}
+
+
+
+.four_3{
+    background: url(image/ship4_3right.gif) no-repeat;
+    background-position: center center;
+}
+.four_3left {
+    background: url(image/ship4_3left.gif) no-repeat;
+}
+.four_3up {
+    background: url(image/ship4_3up.gif) no-repeat;
+}
+.four_3down {
+    background: url(image/ship4_3down.gif) no-repeat;
+}
+
+
+
+.four_4{
+    background: url(image/ship4_4right.gif) no-repeat;
+    background-position: center center;
+}
+.four_4left {
+    background: url(image/ship4_4left.gif) no-repeat;
+}
+.four_4up {
+    background: url(image/ship4_4up.gif) no-repeat;
+}
+.four_4down {
+    background: url(image/ship4_4down.gif) no-repeat;
+}
+
+.three_1{
+    background: url(image/ship3_1right.gif) no-repeat;
+    background-position: center center;
+}
+.three_1left {
+    background: url(image/ship3_1left.gif) no-repeat;
+}
+.three_1up {
+    background: url(image/ship3_1up.gif) no-repeat;
+}
+.three_1down {
+    background: url(image/ship3_1down.gif) no-repeat;
+}
+
+
+.three_2{
+    background: url(image/ship3_2right.gif) no-repeat;
+    background-position: center center;
+}
+.three_2left {
+    background: url(image/ship3_2left.gif) no-repeat;
+}
+.three_2up {
+    background: url(image/ship3_2up.gif) no-repeat;
+}
+.three_2down {
+    background: url(image/ship3_2down.gif) no-repeat;
+}
+
+
+
+.three_3{
+    background: url(image/ship3_3right.gif) no-repeat;
+    background-position: center center;
+}
+.three_3left {
+    background: url(image/ship3_3left.gif) no-repeat;
+}
+.three_3up {
+    background: url(image/ship3_3up.gif) no-repeat;
+}
+.three_3down {
+    background: url(image/ship3_3down.gif) no-repeat;
+}
+
+.two_1{
+    background: url(image/ship2_1right.gif) no-repeat;
+    background-position: center center;
+}
+.two_1left {
+    background: url(image/ship2_1left.gif) no-repeat;
+}
+.two_1up {
+    background: url(image/ship2_1up.gif) no-repeat;
+}
+.two_1down {
+    background: url(image/ship2_1down.gif) no-repeat;
+}
+
+
+
+.two_2{
+    background: url(image/ship2_2right.gif) no-repeat;
+    background-position: center center;
+}
+.two_2left {
+    background: url(image/ship2_2left.gif) no-repeat;
+}
+.two_2up {
+    background: url(image/ship2_2up.gif) no-repeat;
+}
+.two_2down {
+    background: url(image/ship2_2down.gif) no-repeat;
+}
+
+.one {
+    background: url(image/ship1.gif) no-repeat;
+    background-position: center center;
+    z-index: 100;
+
+
+}
+
+
+
+
+
+
