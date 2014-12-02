@@ -150,8 +150,11 @@ p {
 /*.locations {
     background-color: #FFFFEF !important;
 }*/
+.erorDeadZone{
+    background-color: red !important;
+}
 
-.shipsRemove {
+.shipsRemove_9 {
     position: absolute;
     top: 20.6%;
     left: 12%;
@@ -160,7 +163,7 @@ p {
     height: 75px;
 
 }
-.shipsRemove8 {
+.shipsRemove_8 {
     position: absolute;
     top: 40.6%;
     left: 12%;

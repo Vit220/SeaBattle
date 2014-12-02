@@ -694,78 +694,38 @@ var seaBattle = {
         self.randomLocation(1, 9, "#playerOne");
         self.randomLocation(1, 9, "#playerTwo");
 
-    }/*,
+    },
 
-     locationShips: function(td, enterOrLeave, side){
-     var self = this;
+     locationShips: function(dragObject, dropElem, className){
 
-     var numX,
-     numY,
-     numXY =  $(this).attr("class").split(' ', 1)
+         var self = this,
+             $className = className;
 
 
-     location(4, numXY, enterOrLeave, side);
+         $className = parseInt(className.split("_")[1], 10);
 
-     function location (maxLengthShips, numXY, enterOrLeave, param3){
-     numX = numXY[0];
-     numY = numXY[1];
-     var $player = $("#playerOne"),
-     param2True = function(){$player.find('.' + xY).removeClass("locations").addClass("locationsRed");},
-     param2False = function(){$player.find('.' + xY).removeClass("locationsRed").addClass("locations");},
-     xY,
-     arr = [];
+         console.log($className);
 
-     for(var i = 0;i<maxLengthShips;i++){
-     xY = numX + "_" + numY;
 
-     if(side){
 
-     if(numX > 10 - maxLengthShips){
 
-     numX--;
 
-     }else{
-     numX++;
-     }
 
-     console.log(numX);
 
-     }else{
-     if(numY > 10 - maxLengthShips){
 
-     numY--;
 
-     }else{
-     numY++;
-     }
+         dragObject.elem.style.display = 'none';
+
+         var coordinates = $(dropElem).attr("class").split(' ', 1);
+
+         seaBattle.ships[$className].life.push(coordinates.toString());
+
+         seaBattle.deadZone($className  , 1, "#playerOne");
+         setTimeout(function() { $(dropElem).addClass("one"); }, 200);
+
+
 
      }
-
-
-
-     if(enterOrLeave){
-     param2True();
-     }else{
-     param2False();
-
-     }
-
-
-
-
-
-
-
-
-     //arr.push(numX + "_" + numY);
-     }
-
-     }
-
-
-
-
-     }*/
 
 
 };
