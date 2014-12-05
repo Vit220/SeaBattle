@@ -8,7 +8,16 @@ var dragManager = new function() {
     function onMouseDown(e){
         e = fixEvent(e);
       //  moveAt(e);
+       /* console.log(e);
+        document.onkeydown = function (e) {
+            e = e || window.event;
 
+            if ((e.keyCode == 82)) {
+                console.log(e);
+                // directionXY = false;
+            }
+
+        };*/
 
         if (e.which != 1) return;
 

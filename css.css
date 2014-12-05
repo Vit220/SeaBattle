@@ -39,7 +39,7 @@ header h1 {
 #playerOne {
     position: relative;
     top: 28.6%;
-    left: 20%;
+    left: 19%;
 }
 
     #playerOne .fire {
@@ -52,7 +52,7 @@ header h1 {
 #playerTwo {
     position: relative;
     top: 28.6%;
-    left: 56.5%;
+    left: 57.5%;
 }
 
     #playerTwo .fire {
@@ -167,7 +167,7 @@ header h1 {
     width: 170px;
     height: 128px;
      top: 30px;
-    left: 570px;
+    left: 42%;
     display: block;
     z-index: 20;
 }

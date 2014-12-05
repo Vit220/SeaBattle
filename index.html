@@ -18,7 +18,7 @@
 
     <p>пре-альфа</p>
 
-    <p><a href="https://github.com/Vit220/SeaBattle">ссылка на github</a></p>
+    <p><a href="https://github.com/Vit220/test">ссылка на github</a></p>
 </header>
 
 
@@ -337,7 +337,7 @@
 </span>
 </div>
 
-<div class="shipsDiv">
+<div class="shipsDiv" oncontextmenu="return false;">
     <div class="shipsRemove_9" draggable>
     </div>
     <div class="shipsRemove_8" draggable>
@@ -379,6 +379,7 @@ window.onload = function () {
 
 
     dragManager.onDragCancel = function (dragObject) {
+        //console.log(dragObject);
         dragObject.avatar.rollback();
     };
 
@@ -520,15 +521,7 @@ window.onload = function () {
  */
 //var directionXY = true; //направление корабля в ручной растановке по умолчанию вверх
 
-document.onkeydown = function (e) {
-    e = e || window.event;
 
-    if ((e.keyCode == 82)) {
-        console.log(e.keyCode);
-        // directionXY = false;
-    }
-
-};
 
 
 /* $(function() {
