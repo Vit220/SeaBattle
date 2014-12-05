@@ -165,7 +165,7 @@ var seaBattle = {
                 $playerTwo = $("#playerTwo");
                 for (var g = 0; g < self.ships.length; g++) {
                     for (var n = 0; n < self.ships[g].lifeTwo.length; n++) {
-                        $playerTwo.find('.' + self.ships[g].lifeTwo[n]).addClass("sheep").not('.fire');
+                        $playerTwo.find('.' + self.ships[g].lifeTwo[n]).addClass("ship").not('.fire');
 
                     }
                 }
@@ -317,7 +317,7 @@ var seaBattle = {
         self.verifiedCoordinates.push(randomXY);
 
         $player = $("#playerOne").find("." + randomXY);
-        if ($player.hasClass("sheep")) {
+        if ($player.hasClass("ship")) {
             $player.addClass("fire");
             self.message("Противник стреляет в " + randomX + "-" + randomY + " - попал!");
             self.verificationAfterFire(randomXY, 1);
@@ -504,27 +504,27 @@ var seaBattle = {
                 {
                     if (test[0] === 2) {
                         if (test[1]) {
-                            $player.find('.' + one).addClass("sheep").addClass("four_1");
-                            $player.find('.' + two).addClass("sheep").addClass("four_2");
-                            $player.find('.' + three).addClass("sheep").addClass("four_3");
-                            $player.find('.' + four).addClass("sheep").addClass("four_4");
+                            $player.find('.' + one).addClass("ship").addClass("four_1");
+                            $player.find('.' + two).addClass("ship").addClass("four_2");
+                            $player.find('.' + three).addClass("ship").addClass("four_3");
+                            $player.find('.' + four).addClass("ship").addClass("four_4");
                         } else {
-                            $player.find('.' + one).addClass("sheep").addClass("four_1left");
-                            $player.find('.' + two).addClass("sheep").addClass("four_2left");
-                            $player.find('.' + three).addClass("sheep").addClass("four_3left");
-                            $player.find('.' + four).addClass("sheep").addClass("four_4left");
+                            $player.find('.' + one).addClass("ship").addClass("four_1left");
+                            $player.find('.' + two).addClass("ship").addClass("four_2left");
+                            $player.find('.' + three).addClass("ship").addClass("four_3left");
+                            $player.find('.' + four).addClass("ship").addClass("four_4left");
                         }
                     } else {
                         if (test[1]) {
-                            $player.find('.' + one).addClass("sheep").addClass("four_1down");
-                            $player.find('.' + two).addClass("sheep").addClass("four_2down");
-                            $player.find('.' + three).addClass("sheep").addClass("four_3down");
-                            $player.find('.' + four).addClass("sheep").addClass("four_4down");
+                            $player.find('.' + one).addClass("ship").addClass("four_1down");
+                            $player.find('.' + two).addClass("ship").addClass("four_2down");
+                            $player.find('.' + three).addClass("ship").addClass("four_3down");
+                            $player.find('.' + four).addClass("ship").addClass("four_4down");
                         } else {
-                            $player.find('.' + one).addClass("sheep").addClass("four_1up");
-                            $player.find('.' + two).addClass("sheep").addClass("four_2up");
-                            $player.find('.' + three).addClass("sheep").addClass("four_3up");
-                            $player.find('.' + four).addClass("sheep").addClass("four_4up");
+                            $player.find('.' + one).addClass("ship").addClass("four_1up");
+                            $player.find('.' + two).addClass("ship").addClass("four_2up");
+                            $player.find('.' + three).addClass("ship").addClass("four_3up");
+                            $player.find('.' + four).addClass("ship").addClass("four_4up");
                         }
                     }
                     break;
@@ -533,23 +533,23 @@ var seaBattle = {
                 {
                     if (test[0] === 2) {
                         if (test[1]) {
-                            $player.find('.' + one).addClass("sheep").addClass("three_1");
-                            $player.find('.' + two).addClass("sheep").addClass("three_2");
-                            $player.find('.' + three).addClass("sheep").addClass("three_3");
+                            $player.find('.' + one).addClass("ship").addClass("three_1");
+                            $player.find('.' + two).addClass("ship").addClass("three_2");
+                            $player.find('.' + three).addClass("ship").addClass("three_3");
                         } else {
-                            $player.find('.' + one).addClass("sheep").addClass("three_1left");
-                            $player.find('.' + two).addClass("sheep").addClass("three_2left");
-                            $player.find('.' + three).addClass("sheep").addClass("three_3left");
+                            $player.find('.' + one).addClass("ship").addClass("three_1left");
+                            $player.find('.' + two).addClass("ship").addClass("three_2left");
+                            $player.find('.' + three).addClass("ship").addClass("three_3left");
                         }
                     } else {
                         if (test[1]) {
-                            $player.find('.' + one).addClass("sheep").addClass("three_1down");
-                            $player.find('.' + two).addClass("sheep").addClass("three_2down");
-                            $player.find('.' + three).addClass("sheep").addClass("three_3down");
+                            $player.find('.' + one).addClass("ship").addClass("three_1down");
+                            $player.find('.' + two).addClass("ship").addClass("three_2down");
+                            $player.find('.' + three).addClass("ship").addClass("three_3down");
                         } else {
-                            $player.find('.' + one).addClass("sheep").addClass("three_1up");
-                            $player.find('.' + two).addClass("sheep").addClass("three_2up");
-                            $player.find('.' + three).addClass("sheep").addClass("three_3up");
+                            $player.find('.' + one).addClass("ship").addClass("three_1up");
+                            $player.find('.' + two).addClass("ship").addClass("three_2up");
+                            $player.find('.' + three).addClass("ship").addClass("three_3up");
                         }
                     }
                     break;
@@ -558,26 +558,26 @@ var seaBattle = {
                 {
                     if (test[0] === 2) {
                         if (test[1]) {
-                            $player.find('.' + one).addClass("sheep").addClass("two_1");
-                            $player.find('.' + two).addClass("sheep").addClass("two_2");
+                            $player.find('.' + one).addClass("ship").addClass("two_1");
+                            $player.find('.' + two).addClass("ship").addClass("two_2");
                         } else {
-                            $player.find('.' + one).addClass("sheep").addClass("two_1left");
-                            $player.find('.' + two).addClass("sheep").addClass("two_2left");
+                            $player.find('.' + one).addClass("ship").addClass("two_1left");
+                            $player.find('.' + two).addClass("ship").addClass("two_2left");
                         }
                     } else {
                         if (test[1]) {
-                            $player.find('.' + one).addClass("sheep").addClass("two_1down");
-                            $player.find('.' + two).addClass("sheep").addClass("two_2down");
+                            $player.find('.' + one).addClass("ship").addClass("two_1down");
+                            $player.find('.' + two).addClass("ship").addClass("two_2down");
                         } else {
-                            $player.find('.' + one).addClass("sheep").addClass("two_1up");
-                            $player.find('.' + two).addClass("sheep").addClass("two_2up");
+                            $player.find('.' + one).addClass("ship").addClass("two_1up");
+                            $player.find('.' + two).addClass("ship").addClass("two_2up");
                         }
                     }
                     break;
                 }
                 default :
                 {
-                    $player.find('.' + one).addClass("sheep").addClass("one");
+                    $player.find('.' + one).addClass("ship").addClass("one");
                 }
             }
         }
@@ -668,8 +668,7 @@ var seaBattle = {
         var self = this;
 
 
-
-        if(!random){
+        if (!random) {
             self.randomLocation(4, 0, "#playerTwo");
             self.randomLocation(3, 1, "#playerTwo");
             self.randomLocation(3, 2, "#playerTwo");
@@ -680,7 +679,7 @@ var seaBattle = {
             self.randomLocation(1, 7, "#playerTwo");
             self.randomLocation(1, 8, "#playerTwo");
             self.randomLocation(1, 9, "#playerTwo");
-        }else {
+        } else {
             self.randomLocation(4, 0, "#playerOne");
             self.randomLocation(3, 1, "#playerOne");
             self.randomLocation(3, 2, "#playerOne");
@@ -693,7 +692,6 @@ var seaBattle = {
             self.randomLocation(1, 9, "#playerOne");
         }
     },
-
 
 
     locationShips: function (dragObject, dropElem, className) {
@@ -715,7 +713,7 @@ var seaBattle = {
             for (var i = 1; i < shipsLength; i++) {
                 coorY++;
                 numbXY = coorY + "_" + coorX;
-                if(self.arrShips("deadArea", numbXY, "#playerOne" )){
+                if (self.arrShips("deadArea", numbXY, "#playerOne")) {
                     self.ships[$className].life = [];
                     return;
                 }
@@ -800,14 +798,14 @@ var seaBattle = {
         }
 
 
-       if( $(".shipsDiv").children('div').length == 0){
-           $("#buttonRandom").css("display", "none");
-           $("#buttonStartGame").css("display", "block");
+        if ($(".shipsDiv").children('div').length == 0) {
+            $("#buttonRandom").css("display", "none");
+            $("#buttonStartGame").css("display", "block");
 
-       }else {
-           $("#buttonRandom").css("display", "none");
-           $("#restartGame").css("display", "block");
-       }
+        } else {
+            $("#buttonRandom").css("display", "none");
+            $("#restartGame").css("display", "block");
+        }
 
         /*  if($className === 5){
          var coorXY = coordinates[0].split('_', 2);

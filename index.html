@@ -348,13 +348,13 @@
 
 </div>
 <div class="buttomSeaBattle">
-<span >
+<span>
     <input id="buttonRandom" type="button" value=" Разместить случайно ">
 </span>
-<span >
+<span>
     <input id="buttonStartGame" type="button" value="Начать игру!">
 </span>
-<span >
+<span>
     <input id="restartGame" type="button" value="Заново!">
 </span>
 </div>
@@ -362,8 +362,11 @@
 
 <script type="text/javascript">
 window.onload = function () {
-    var $buttonRandom = $("#buttonRandom");
-    var $table = $("#playerTwo").find('table td').not('.notToSelect').not('.deadZone');
+    var $buttonRandom = $("#buttonRandom"),
+            $buttonStartGame = $("#buttonStartGame"),
+            $shipsDiv = $(".shipsDiv"),
+            $restartGame = $("#restartGame"),
+            $table = $("#playerTwo").find('table td').not('.notToSelect').not('.deadZone');
 
     ( function () {
         $("#playerOne").find('table td').not('.notToSelect').attr('droppable', 'droppable');
@@ -375,7 +378,7 @@ window.onload = function () {
     };
 
     dragManager.onDragEnd = function (dragObject, dropElem) {
-        if ($(dropElem).hasClass("deadZone") || $(dropElem).hasClass("sheep")) {
+        if ($(dropElem).hasClass("deadZone") || $(dropElem).hasClass("ship")) {
             return;
         }
         var $dragObject = $(dragObject.elem).attr('class');
@@ -384,28 +387,26 @@ window.onload = function () {
     };
 
 
-    $("#buttonStartGame").on('click', function () {
-        $("#buttonStartGame").css("display", "none");
-        $(".shipsDiv").css("display", "none");
-        $("#restartGame").css("display", "block");
+    $buttonStartGame.on('click', function () {
+        $buttonStartGame.css("display", "none");
+        $shipsDiv.css("display", "none");
+        $restartGame.css("display", "block");
         seaBattle.placementOfShips(false);
-        letsGo();
+        letsGoSeaBattle();
     });
-    $("#restartGame").on('click', function () {
+    $restartGame.on('click', function () {
         location.reload();
     });
     $buttonRandom.on('click', function () {
         $buttonRandom.css("display", "none");
-        $("#buttonStartGame").css("display", "block");
-        $("#restartGame").css("display", "block");
+        $buttonStartGame.css("display", "block");
+        $restartGame.css("display", "block");
         seaBattle.placementOfShips(true);
-        //seaBattle.placementOfShips(false);
-        $(".shipsDiv").css("display", "none");
-        //letsGo();
+        $shipsDiv.css("display", "none");
     });
 
 
-    var letsGo = function() {
+    var letsGoSeaBattle = function () {
         $table.on('click', function () {
 
             var numbXY = $(this).attr("class").split(' ', 1);
@@ -426,13 +427,12 @@ window.onload = function () {
                     seaBattle.checkFinal(false);
                 }
 
-                setTimeout(fun, 100);
+                setTimeout(fun, 1000);
             }
 
 
         });
     };
-
 
 
 };
@@ -514,14 +514,10 @@ document.onkeydown = function (e) {
 
     if ((e.keyCode == 82)) {
         console.log(e.keyCode);
-       // directionXY = false;
+        // directionXY = false;
     }
 
 };
-
-
-
-
 
 
 /* $(function() {

@@ -99,12 +99,12 @@ p {
     font-size:12px;
 }
 
-#playerOne .sheep {
+#playerOne .ship {
     border: 1px solid #3355aa;
     /*bbackground-color: #FFFFEF;*/
 }
 
-#playerTwo .sheep {
+#playerTwo .ship {
     border: 1px solid #3355aa;
     background-color:#808080;
 }
