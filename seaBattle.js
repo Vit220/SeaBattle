@@ -329,13 +329,13 @@ var seaBattle = {
             self.message("Противник стреляет в " + randomX + "-" + randomY + " - попал!");
 
             self.verificationAfterFire(randomXY, 1);
-            seaBattle.checkFinal(true);
-            seaBattle.checkFinal(false);
+            self.checkFinal(true);
+            self.checkFinal(false);
             setTimeout(fun, 100);
 
         } else {
-            seaBattle.checkFinal(true);
-            seaBattle.checkFinal(false);
+            self.checkFinal(true);
+            self.checkFinal(false);
             $player.addClass("miss");
             self.message("Противник стреляет в " + randomX + "-" + randomY + " - промазал!");
             if (!wounded) {                                                                                              //если корабль убит весь
