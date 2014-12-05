@@ -9,28 +9,28 @@ body {
 
 }
 
-#topic h1 {
+header h1 {
 
-    position: fixed;
-    top: 10%;
+    position: relative;
+    top: 20px;
     left: 38%;
 }
-    #topic p {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 70%;
-    color: red;
-    position: fixed;
-    top: 10%;
-    left: 38%;
+    header p {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 70%;
+        color: red;
+        position: relative;
+        top: 0;
+        left: 38%;
 
-}
-#topic a {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: medium;
-    position: fixed;
-    top: 18%;
-    left: 38%;
-}
+    }
+    header a {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: medium;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
 
 /*.fireNext{
     background: url(image/90.gif) no-repeat;
@@ -66,7 +66,7 @@ body {
 
 #logForSeaBattle{
     position: relative;
-    top: 28.6%;
+    top: -70px;
     left: 37.5%;
     width: 250px;
     height: 250px;
@@ -139,10 +139,26 @@ p {
     background-position: center center;
 
 }
-#button{
-    position: absolute;
-    top: 20.6%;
-    left: 22%;
+#buttonRandom{
+    position: relative;
+    display: block;
+    top: -340px;
+    left: 570px;
+    z-index: 20;
+}
+#buttonStartGame{
+    position: relative;
+    display: none;
+    top: -340px;
+    left: 570px;
+    z-index: 20;
+}
+#restartGame{
+    position: relative;
+    display: none;
+    top: -240px;
+    left: 570px;
+    z-index: 20;
 }
 
 .locationsRed {
@@ -157,48 +173,87 @@ p {
 
 .shipsDiv{
     position: relative;
-    width: 100px;
-    height: 95px;
-     top: 150px;
-    left: 600px;
+    width: 170px;
+    height: 128px;
+     top: 130px;
+    left: 570px;
+    display: block;
     z-index: 20;
 }
 
-.shipsRemove_9 {
-    position: absolute;
-    top: 0;
-    left: 28px;
-    border-collapse: collapse;
-    width: 25px;
-    height: 25px;
+    .shipsRemove_9, .shipsRemove_8, .shipsRemove_7, .shipsRemove_6, .shipsRemove_5, .shipsRemove_4, .shipsRemove_3, .shipsRemove_2, .shipsRemove_1, .shipsRemove_0 {
+        position: absolute;
+        background-color: orange;
+    }
 
-}
-.shipsRemove_8 {
-    position: absolute;
-    top: 28px;
-    left: 28px;
-    border-collapse: collapse;
-    width: 25px;
-    height: 25px;
 
-}
-.shipsRemove_0 {
-    position: absolute;
-    top: 0;
-    left: 0;
+        .shipsRemove_9 {
+            top: 98px;
+            left: 0;
+            width: 25px;
+            height: 25px;
 
-    width: 25px;
-    height: 95px;
+        }
+        .shipsRemove_8 {
+            top: 98px;
+            left: 28px;
+            width: 25px;
+            height: 25px;
 
-}
-.shipsRemoveAll {
-    background-color: orange;
+        }
+        .shipsRemove_7 {
+            top: 98px;
+            left: 56px;
+            width: 25px;
+            height: 25px;
 
-}
+        }
+        .shipsRemove_6 {
+            top: 98px;
+            left: 84px;
+            width: 25px;
+            height: 25px;
 
-.shipsRemove td, th {
-    border: 1px solid #ffffEf;
-}
+        }
+        .shipsRemove_5 {
+            top: 0;
+            left: 140px;
+            width: 25px;
+            height: 45px;
+        }
+        .shipsRemove_4 {
+            top: 0;
+            left: 112px;
+            width: 25px;
+            height: 45px;
+        }
+        .shipsRemove_3 {
+            top: 0;
+            left: 84px;
+            width: 25px;
+            height: 45px;
+        }
+        .shipsRemove_2 {
+            top: 0;
+            left: 56px;
+            width: 25px;
+            height: 70px;
+        }
+        .shipsRemove_1 {
+            top: 0;
+            left: 28px;
+            width: 25px;
+            height: 70px;
+        }
+        .shipsRemove_0 {
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 95px;
+        }
+
+
+
 
 
 .four_1{

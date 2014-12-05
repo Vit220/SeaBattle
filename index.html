@@ -13,24 +13,34 @@
 </head>
 <body>
 
-<div id="topic">
+<header>
     <h1> Морской бой </h1>
 
     <p>пре-альфа</p>
 
     <p><a href="https://github.com/Vit220/SeaBattle">ссылка на github</a></p>
-</div>
+</header>
 
 <div class="shipsDiv">
-    <div class="shipsRemove_9 shipsRemoveAll" draggable>
+    <div class="shipsRemove_9" draggable>
     </div>
-
-    <div class="shipsRemove_8 shipsRemoveAll" draggable>
+    <div class="shipsRemove_8" draggable>
     </div>
-
-
-    <div class="shipsRemove_0 shipsRemoveAll" draggable>
-
+    <div class="shipsRemove_7" draggable>
+    </div>
+    <div class="shipsRemove_6" draggable>
+    </div>
+    <div class="shipsRemove_5" draggable>
+    </div>
+    <div class="shipsRemove_4" draggable>
+    </div>
+    <div class="shipsRemove_3" draggable>
+    </div>
+    <div class="shipsRemove_2" draggable>
+    </div>
+    <div class="shipsRemove_1" draggable>
+    </div>
+    <div class="shipsRemove_0" draggable>
     </div>
 </div>
 
@@ -337,22 +347,65 @@
 <div id="logForSeaBattle">
 
 </div>
-
-<div id="button">
-    <p><input type="button" value=" Разместить случайно "></p>
+<div class="buttomSeaBattle">
+<span >
+    <input id="buttonRandom" type="button" value=" Разместить случайно ">
+</span>
+<span >
+    <input id="buttonStartGame" type="button" value="Начать игру!">
+</span>
+<span >
+    <input id="restartGame" type="button" value="Заново!">
+</span>
 </div>
 
 
 <script type="text/javascript">
 window.onload = function () {
-    var $button = $("#button");
-    // seaBattle.addClass(["1_1", "2_1", "3_1", "4_1"], 4, $("#playerTwo"),[1, false]  , "#playerOne");
-    $button.on('click', function () {
-        $button.css("display", "none");
-        seaBattle.placementOfShips();
+    var $buttonRandom = $("#buttonRandom");
+    var $table = $("#playerTwo").find('table td').not('.notToSelect').not('.deadZone');
+
+    ( function () {
+        $("#playerOne").find('table td').not('.notToSelect').attr('droppable', 'droppable');
+    }());
 
 
-        var $table = $("#playerTwo").find('table td').not('.notToSelect').not('.deadZone');
+    dragManager.onDragCancel = function (dragObject) {
+        dragObject.avatar.rollback();
+    };
+
+    dragManager.onDragEnd = function (dragObject, dropElem) {
+        if ($(dropElem).hasClass("deadZone") || $(dropElem).hasClass("sheep")) {
+            return;
+        }
+        var $dragObject = $(dragObject.elem).attr('class');
+        console.log($dragObject);
+        seaBattle.locationShips(dragObject, dropElem, $dragObject);
+    };
+
+
+    $("#buttonStartGame").on('click', function () {
+        $("#buttonStartGame").css("display", "none");
+        $(".shipsDiv").css("display", "none");
+        $("#restartGame").css("display", "block");
+        seaBattle.placementOfShips(false);
+        letsGo();
+    });
+    $("#restartGame").on('click', function () {
+        location.reload();
+    });
+    $buttonRandom.on('click', function () {
+        $buttonRandom.css("display", "none");
+        $("#buttonStartGame").css("display", "block");
+        $("#restartGame").css("display", "block");
+        seaBattle.placementOfShips(true);
+        //seaBattle.placementOfShips(false);
+        $(".shipsDiv").css("display", "none");
+        //letsGo();
+    });
+
+
+    var letsGo = function() {
         $table.on('click', function () {
 
             var numbXY = $(this).attr("class").split(' ', 1);
@@ -378,8 +431,13 @@ window.onload = function () {
 
 
         });
-    });
+    };
+
+
+
 };
+//var $table = $("#playerTwo").find('table td').not('.notToSelect').not('.deadZone');
+
 /*var $tableOne = $("#playerOne").find('table td').not('.notToSelect').not('.deadZone');
 
  var aaa = function (){
@@ -449,53 +507,21 @@ window.onload = function () {
 
  });
  */
-var directionXY = true; //направление корабля в ручной растановке по умолчанию вверх
+//var directionXY = true; //направление корабля в ручной растановке по умолчанию вверх
 
 document.onkeydown = function (e) {
     e = e || window.event;
 
     if ((e.keyCode == 82)) {
         console.log(e.keyCode);
-        directionXY = false;
+       // directionXY = false;
     }
 
 };
 
 
-( function () {
-    $("#playerOne").find('table td').not('.notToSelect').attr('droppable', 'droppable');
-}());
-dragManager.onDragCancel = function (dragObject) {
-
-    /*    $("#playerOne").keyup(function (e) {
-     if ((e.which == 16)) {
-     console.log(e.which);
-     ///$tableOne.removeClass("locationsRed");
-     // side = !side;
-     // seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
-     return false;
-     }
-
-     });
-     */
-    dragObject.avatar.rollback();
-};
-
-dragManager.onDragEnd = function (dragObject, dropElem) {
-    console.log(dragObject);
-
-    if ($(dropElem).hasClass("deadZone")) {
-        return dragObject.avatar.rollback();
-    }
 
 
-    var $dragObject = $(dragObject.elem).attr('class');
-    console.log($dragObject);
-
-    seaBattle.locationShips(dragObject, dropElem, $dragObject);
-
-
-};
 
 
 /* $(function() {

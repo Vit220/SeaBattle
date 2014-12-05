@@ -612,11 +612,12 @@ var seaBattle = {
                 // $player = $(playerOneOrTwo).find('.' + arr);
                 if (!self.arrShips("life", arr, playerOneOrTwo)) {
                     deadAreaOneOrTwo.push(arr);
-                    if(playerOneOrTwo === "#playerOne"){
+                    if (playerOneOrTwo === "#playerOne") {
                         $player = $(playerOneOrTwo).find('.' + arr).removeClass("ui-droppable").addClass("deadZone");
                     }
                 }
             }
+
             numX = numbersId[0];
             numY = numbersId[1];
 
@@ -663,126 +664,173 @@ var seaBattle = {
         }
     },
 
-    placementOfShips: function () {
+    placementOfShips: function (random) {
         var self = this;
 
-        self.randomLocation(4, 0, "#playerOne");
-        self.randomLocation(4, 0, "#playerTwo");
 
-        self.randomLocation(3, 1, "#playerOne");
-        self.randomLocation(3, 1, "#playerTwo");
 
-        self.randomLocation(3, 2, "#playerOne");
-        self.randomLocation(3, 2, "#playerTwo");
-
-        self.randomLocation(2, 3, "#playerOne");
-        self.randomLocation(2, 3, "#playerTwo");
-
-        self.randomLocation(2, 4, "#playerOne");
-        self.randomLocation(2, 4, "#playerTwo");
-
-        self.randomLocation(2, 5, "#playerOne");
-        self.randomLocation(2, 5, "#playerTwo");
-
-        self.randomLocation(1, 6, "#playerOne");
-        self.randomLocation(1, 6, "#playerTwo");
-
-        self.randomLocation(1, 7, "#playerOne");
-        self.randomLocation(1, 7, "#playerTwo");
-
-        self.randomLocation(1, 8, "#playerOne");
-        self.randomLocation(1, 8, "#playerTwo");
-
-        self.randomLocation(1, 9, "#playerOne");
-        self.randomLocation(1, 9, "#playerTwo");
-
+        if(!random){
+            self.randomLocation(4, 0, "#playerTwo");
+            self.randomLocation(3, 1, "#playerTwo");
+            self.randomLocation(3, 2, "#playerTwo");
+            self.randomLocation(2, 3, "#playerTwo");
+            self.randomLocation(2, 4, "#playerTwo");
+            self.randomLocation(2, 5, "#playerTwo");
+            self.randomLocation(1, 6, "#playerTwo");
+            self.randomLocation(1, 7, "#playerTwo");
+            self.randomLocation(1, 8, "#playerTwo");
+            self.randomLocation(1, 9, "#playerTwo");
+        }else {
+            self.randomLocation(4, 0, "#playerOne");
+            self.randomLocation(3, 1, "#playerOne");
+            self.randomLocation(3, 2, "#playerOne");
+            self.randomLocation(2, 3, "#playerOne");
+            self.randomLocation(2, 4, "#playerOne");
+            self.randomLocation(2, 5, "#playerOne");
+            self.randomLocation(1, 6, "#playerOne");
+            self.randomLocation(1, 7, "#playerOne");
+            self.randomLocation(1, 8, "#playerOne");
+            self.randomLocation(1, 9, "#playerOne");
+        }
     },
 
-     locationShips: function(dragObject, dropElem, className){
-
-         var self = this,
-             $className = className,
-             coorXY,
-             coorX,
-             coorY,
-             numbXY,
-             maxLength;
 
 
-         $className = parseInt(className.split("_")[1], 10);
+    locationShips: function (dragObject, dropElem, className) {
 
-         console.log($className);
-
-         function addShips(shipsLength, xOrY){
-             for(var i = 1;i<shipsLength;i++){
-                 coorY++;
-                 numbXY = coorY + "_" + coorX;
-                 seaBattle.ships[$className].life.push(numbXY);
-             }
-             maxLength = shipsLength;
-             dragObject.elem.style.display = 'none';
-             seaBattle.deadZone($className  , 1, "#playerOne");
-
-             self.addClass(seaBattle.ships[$className].life, maxLength, $("#playerOne"), [1, false], "#playerOne"  );
-         }
-
-         var coordinates = $(dropElem).attr("class").split(' ', 1);
-         seaBattle.ships[$className].life.push(coordinates.toString());
-
-         coorXY = coordinates[0].split('_', 2);
-         coorX = coorXY[1];
-         coorY = coorXY[0];
-
-         switch ($className){
-             case 0:{
-                 if(+coorY < 8){
-                     addShips(4);
-                     break;
-                 }
-                 seaBattle.ships[$className].life = [];
-                 break;
-             }
-             case 8:{
-                 addShips(1);
-                 break;
-             }case 9:{
-                 addShips(1);
-                 break;
-             }
-             default :{
-                 seaBattle.ships[$className].life = [];
-                 return;
-             }
-
-         }
+        var self = this,
+            $className = className,
+            coorXY,
+            coorX,
+            coorY,
+            numbXY,
+            maxLength;
 
 
-      /*  if($className === 5){
-            var coorXY = coordinates[0].split('_', 2);
-           var X = coorXY[1];
-           var Y = coorXY[0];
-           // console.log(Y);
-            if(+Y < 10){
-                Y++;
+        $className = parseInt(className.split("_")[1], 10);
 
-            }else{
-                seaBattle.ships[$className].life = [];
-                return;}
+        console.log($className);
 
-            var  numbXY = Y + "_" + X;
-            var max = 2;
-            seaBattle.ships[$className].life.push(numbXY);
+        function addShips(shipsLength, xOrY) {
+            for (var i = 1; i < shipsLength; i++) {
+                coorY++;
+                numbXY = coorY + "_" + coorX;
+                if(self.arrShips("deadArea", numbXY, "#playerOne" )){
+                    self.ships[$className].life = [];
+                    return;
+                }
+                self.ships[$className].life.push(numbXY);
+            }
+            maxLength = shipsLength;
+            dragObject.elem.style.display = 'none';
+            self.deadZone($className, 1, "#playerOne");
 
-        }else{
-            max = 1;
-        }*/
+            self.addClass(self.ships[$className].life, maxLength, $("#playerOne"), [1, false], "#playerOne");
+        }
 
+        var coordinates = $(dropElem).attr("class").split(' ', 1);
+        self.ships[$className].life.push(coordinates.toString());
+
+        coorXY = coordinates[0].split('_', 2);
+        coorX = coorXY[1];
+        coorY = coorXY[0];
+
+        switch ($className) {
+            case 0:
+            {
+                if (+coorY < 8) {
+                    addShips(4);
+                    break;
+                }
+                self.ships[$className].life = [];
+                break;
+            }
+            case 1:
+            {
+                if (+coorY < 9) {
+                    addShips(3);
+                    break;
+                }
+                self.ships[$className].life = [];
+                break;
+            }
+            case 2:
+            {
+                if (+coorY < 9) {
+                    addShips(3);
+                    break;
+                }
+                self.ships[$className].life = [];
+                break;
+            }
+            case 3:
+            {
+                if (+coorY < 9) {
+                    addShips(2);
+                    break;
+                }
+                self.ships[$className].life = [];
+                break;
+            }
+            case 4:
+            {
+                if (+coorY < 9) {
+                    addShips(2);
+                    break;
+                }
+                self.ships[$className].life = [];
+                break;
+            }
+            case 5:
+            {
+                if (+coorY < 9) {
+                    addShips(2);
+                    break;
+                }
+                self.ships[$className].life = [];
+                break;
+            }
+
+            default :
+            {
+                addShips(1);
+                break;
+            }
+
+        }
+
+
+       if( $(".shipsDiv").children('div').length == 0){
+           $("#buttonRandom").css("display", "none");
+           $("#buttonStartGame").css("display", "block");
+
+       }else {
+           $("#buttonRandom").css("display", "none");
+           $("#restartGame").css("display", "block");
+       }
+
+        /*  if($className === 5){
+         var coorXY = coordinates[0].split('_', 2);
+         var X = coorXY[1];
+         var Y = coorXY[0];
+         // console.log(Y);
+         if(+Y < 10){
+         Y++;
+
+         }else{
+         seaBattle.ships[$className].life = [];
+         return;}
+
+         var  numbXY = Y + "_" + X;
+         var max = 2;
+         seaBattle.ships[$className].life.push(numbXY);
+
+         }else{
+         max = 1;
+         }*/
 
 
         // dragObject.elem.style.display = 'none';
-
-
-
 
 
         // console.log(coordinates.toString());
@@ -790,13 +838,12 @@ var seaBattle = {
 
         /* seaBattle.deadZone($className  , 1, "#playerOne");
 
-        self.addClass(seaBattle.ships[$className].life, maxLength, $("#playerOne"), [1, false], "#playerOne"  );*/
+         self.addClass(seaBattle.ships[$className].life, maxLength, $("#playerOne"), [1, false], "#playerOne"  );*/
 
-         /*setTimeout(function() { $(dropElem).addClass("one"); }, 200);*/
+        /*setTimeout(function() { $(dropElem).addClass("one"); }, 200);*/
 
 
-
-     }
+    }
 
 
 };
