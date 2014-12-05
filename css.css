@@ -37,52 +37,37 @@ header h1 {
 }*/
 
 #playerOne {
-    position: absolute;
+    position: relative;
     top: 28.6%;
     left: 20%;
 }
 
-#playerOne .fire {
-    border: 1px solid #3355aa;
-    background: url(image/90.gif) no-repeat;
-    background-position: center center;
-    background-color: #FFFFEF;
-}
+    #playerOne .fire {
+        border: 1px solid #3355aa;
+        background: url(image/90.gif) no-repeat;
+        background-position: center center;
+        background-color: #FFFFEF;
+    }
 
 #playerTwo {
-    position: absolute;
+    position: relative;
     top: 28.6%;
     left: 56.5%;
 }
 
-#playerTwo .fire {
-    border: 1px solid #3355aa;
-    background: url(image/90.gif) no-repeat !important;
-    background-position: center center;
-    background-color: #FFFFEF;
+    #playerTwo .fire {
+        border: 1px solid #3355aa;
+        background: url(image/90.gif) no-repeat !important;
+        background-position: center center;
+        background-color: #FFFFEF;
 
 
-}
+    }
 
-#logForSeaBattle{
-    position: relative;
-    top: -70px;
-    left: 37.5%;
-    width: 250px;
-    height: 250px;
-    text-align: center;
-    overflow: auto;
-    z-index: 10;
-    /*background-color: #FFFFEF;*/
-
-}
 
 .PlayerField {
     background-color: #FFFFEF;
     position: absolute;
-    top: 28.6%;
-    left: 20.5%;
-
     border-collapse: collapse;
     width: 250px;
     height: 250px;
@@ -90,29 +75,41 @@ header h1 {
     text-align: center;
     z-index: 10;
 }
+    .PlayerField td{
+        border: 1px solid #3355aa;
 
-td {
-    border: 1px solid #3355aa;
 
+    }
+
+#logForSeaBattle{
+    position: relative;
+    left: 37.5%;
+    left: 37.5%;
+    width: 250px;
+    height: 200px;
+    text-align: center;
+    overflow: auto;
+    z-index: 10;
+    /*background-color: #FFFFEF;*/
 }
-p {
-    font-size:12px;
-}
+    #logForSeaBattle p {
+        font-size:12px;
+    }
 
-#playerOne .ship {
+/*#playerOne .ship {
     border: 1px solid #3355aa;
-    /*bbackground-color: #FFFFEF;*/
+    *//*bbackground-color: #FFFFEF;*//*
 }
 
 #playerTwo .ship {
     border: 1px solid #3355aa;
     background-color:#808080;
-}
+}*/
 
-.deadZone {
+/*.deadZone {
     background-color: #0077b3 !important;
 
-}
+}*/
 
 .miss {
     border: 1px solid #3355aa;
@@ -139,25 +136,31 @@ p {
     background-position: center center;
 
 }
+
+.buttonSeaBattle{
+    position: relative;
+
+    left: 50px;
+}
 #buttonRandom{
     position: relative;
     display: block;
-    top: -340px;
-    left: 570px;
+    /*top: -340px;*/
+    left: 38%;
     z-index: 20;
 }
 #buttonStartGame{
     position: relative;
     display: none;
-    top: -340px;
-    left: 570px;
+    /*top: -340px;*/
+    left: 40%;
     z-index: 20;
 }
 #restartGame{
     position: relative;
     display: none;
-    top: -240px;
-    left: 570px;
+    /*top: -240px;*/
+    left: 41%;
     z-index: 20;
 }
 
@@ -175,7 +178,7 @@ p {
     position: relative;
     width: 170px;
     height: 128px;
-     top: 130px;
+     top: 30px;
     left: 570px;
     display: block;
     z-index: 20;
@@ -184,6 +187,7 @@ p {
     .shipsRemove_9, .shipsRemove_8, .shipsRemove_7, .shipsRemove_6, .shipsRemove_5, .shipsRemove_4, .shipsRemove_3, .shipsRemove_2, .shipsRemove_1, .shipsRemove_0 {
         position: absolute;
         background-color: orange;
+        display: block;
     }
 
 
@@ -192,6 +196,7 @@ p {
             left: 0;
             width: 25px;
             height: 25px;
+
 
         }
         .shipsRemove_8 {

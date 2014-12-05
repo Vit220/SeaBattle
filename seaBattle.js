@@ -1,70 +1,70 @@
 var seaBattle = {
     ships: [
         {
-            name: "0",
+           // name: "0",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "1",
+           // name: "1",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "2",
+           // name: "2",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "3",
+           // name: "3",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "4",
+           // name: "4",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "5",
+            //name: "5",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "6",
+           // name: "6",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "7",
+           // name: "7",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "8",
+           // name: "8",
             life: [],
             deadArea: [],
             lifeTwo: [],
             deadAreaTwo: []
         },
         {
-            name: "9",
+           // name: "9",
             life: [],
             deadArea: [],
             lifeTwo: [],
@@ -88,6 +88,8 @@ var seaBattle = {
     },
 
     afterMiss: function (param) {
+       /* seaBattle.checkFinal(true);
+        seaBattle.checkFinal(false);*/
         var self = this,
             td = param.className.split(" "),
             miss = td[0].split("_");
@@ -96,6 +98,9 @@ var seaBattle = {
     },
 
     verificationAfterFire: function (param, playerOneOrTwo) {                                                           //добавляет промахи вокруг убитого коробля
+
+       /* seaBattle.checkFinal(true);
+        seaBattle.checkFinal(false);*/
         var self = this,
             $playerOne,
             $playerTwo,
@@ -319,11 +324,15 @@ var seaBattle = {
         $player = $("#playerOne").find("." + randomXY);
         if ($player.hasClass("ship")) {
             $player.addClass("fire");
+            seaBattle.checkFinal(true);
+            seaBattle.checkFinal(false);
             self.message("Противник стреляет в " + randomX + "-" + randomY + " - попал!");
             self.verificationAfterFire(randomXY, 1);
             setTimeout(fun, 100);
 
         } else {
+            seaBattle.checkFinal(true);
+            seaBattle.checkFinal(false);
             $player.addClass("miss");
             self.message("Противник стреляет в " + randomX + "-" + randomY + " - промазал!");
             if (!wounded) {                                                                                              //если корабль убит весь
@@ -763,7 +772,7 @@ var seaBattle = {
             }
             case 3:
             {
-                if (+coorY < 9) {
+                if (+coorY < 10) {
                     addShips(2);
                     break;
                 }
@@ -772,7 +781,7 @@ var seaBattle = {
             }
             case 4:
             {
-                if (+coorY < 9) {
+                if (+coorY < 10) {
                     addShips(2);
                     break;
                 }
@@ -781,7 +790,7 @@ var seaBattle = {
             }
             case 5:
             {
-                if (+coorY < 9) {
+                if (+coorY < 10) {
                     addShips(2);
                     break;
                 }
@@ -796,52 +805,56 @@ var seaBattle = {
             }
 
         }
+    /*    console.log($(".shipsDiv").children('div').is(':visible'));
+        if(!$(".shipsDiv").children('div').is(':visible')){
+
+                $("#buttonRandom").css("display", "none");
+                $("#buttonStartGame").css("display", "block");
 
 
-        if ($(".shipsDiv").children('div').length == 0) {
-            $("#buttonRandom").css("display", "none");
-            $("#buttonStartGame").css("display", "block");
+
 
         } else {
             $("#buttonRandom").css("display", "none");
             $("#restartGame").css("display", "block");
         }
-
-        /*  if($className === 5){
-         var coorXY = coordinates[0].split('_', 2);
-         var X = coorXY[1];
-         var Y = coorXY[0];
-         // console.log(Y);
-         if(+Y < 10){
-         Y++;
-
-         }else{
-         seaBattle.ships[$className].life = [];
-         return;}
-
-         var  numbXY = Y + "_" + X;
-         var max = 2;
-         seaBattle.ships[$className].life.push(numbXY);
-
-         }else{
-         max = 1;
-         }*/
+*/
 
 
-        // dragObject.elem.style.display = 'none';
 
 
-        // console.log(coordinates.toString());
-        // seaBattle.ships[$className].life.push(coordinates.toString());
+        if (checkAllShipsInGame()) {
+                $("#buttonRandom").css("display", "none");
+                $("#buttonStartGame").css("display", "block");
+        } else {
+            $("#buttonRandom").css("display", "none");
+            $("#restartGame").css("display", "block");
+        }
 
-        /* seaBattle.deadZone($className  , 1, "#playerOne");
-
-         self.addClass(seaBattle.ships[$className].life, maxLength, $("#playerOne"), [1, false], "#playerOne"  );*/
-
-        /*setTimeout(function() { $(dropElem).addClass("one"); }, 200);*/
 
 
-    }
+        function checkAllShipsInGame (){
+            for(var i = 0; i < self.ships.length; i++){
+                    if(self.ships[i].life.length == 0){
+                        return false;
+                    }
+            }
+                return true;
+        }
+
+
+
+    }/*,
+    restartGame: function(){
+        var self = this;
+
+        for(var i = 0; i < self.ships.length; i++){
+            self.ships[i].life = [];
+        }
+
+        $("#playerOne")
+
+    }*/
 
 
 };

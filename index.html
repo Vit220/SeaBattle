@@ -21,28 +21,7 @@
     <p><a href="https://github.com/Vit220/SeaBattle">ссылка на github</a></p>
 </header>
 
-<div class="shipsDiv">
-    <div class="shipsRemove_9" draggable>
-    </div>
-    <div class="shipsRemove_8" draggable>
-    </div>
-    <div class="shipsRemove_7" draggable>
-    </div>
-    <div class="shipsRemove_6" draggable>
-    </div>
-    <div class="shipsRemove_5" draggable>
-    </div>
-    <div class="shipsRemove_4" draggable>
-    </div>
-    <div class="shipsRemove_3" draggable>
-    </div>
-    <div class="shipsRemove_2" draggable>
-    </div>
-    <div class="shipsRemove_1" draggable>
-    </div>
-    <div class="shipsRemove_0" draggable>
-    </div>
-</div>
+
 
 <div id="playerOne" oncontextmenu="return false;">
     <table class="PlayerField">
@@ -194,7 +173,7 @@
     </table>
 </div>
 
-<div id="playerTwo">
+<div id="playerTwo" oncontextmenu="return false;">
     <table class="PlayerField">
         <tr>
             <td class="notToSelect"></td>
@@ -344,10 +323,9 @@
     </table>
 </div>
 
-<div id="logForSeaBattle">
 
-</div>
-<div class="buttomSeaBattle">
+
+<div class="buttonSeaBattle">
 <span>
     <input id="buttonRandom" type="button" value=" Разместить случайно ">
 </span>
@@ -357,6 +335,33 @@
 <span>
     <input id="restartGame" type="button" value="Заново!">
 </span>
+</div>
+
+<div class="shipsDiv">
+    <div class="shipsRemove_9" draggable>
+    </div>
+    <div class="shipsRemove_8" draggable>
+    </div>
+    <div class="shipsRemove_7" draggable>
+    </div>
+    <div class="shipsRemove_6" draggable>
+    </div>
+    <div class="shipsRemove_5" draggable>
+    </div>
+    <div class="shipsRemove_4" draggable>
+    </div>
+    <div class="shipsRemove_3" draggable>
+    </div>
+    <div class="shipsRemove_2" draggable>
+    </div>
+    <div class="shipsRemove_1" draggable>
+    </div>
+    <div class="shipsRemove_0" draggable>
+    </div>
+</div>
+
+<div id="logForSeaBattle">
+
 </div>
 
 
@@ -398,6 +403,7 @@ window.onload = function () {
         location.reload();
     });
     $buttonRandom.on('click', function () {
+        //seaBattle.restartGame();
         $buttonRandom.css("display", "none");
         $buttonStartGame.css("display", "block");
         $restartGame.css("display", "block");
@@ -409,25 +415,30 @@ window.onload = function () {
     var letsGoSeaBattle = function () {
         $table.on('click', function () {
 
+
             var numbXY = $(this).attr("class").split(' ', 1);
 
 
             if (seaBattle.arrShips("life", numbXY[0], "#playerTwo")) {
+             /*   seaBattle.checkFinal(true);
+                seaBattle.checkFinal(false);*/
                 $(this).addClass('fire');
 
                 seaBattle.verificationAfterFire(this, 2);
-                seaBattle.checkFinal(true);
+
             } else {
+               // seaBattle.checkFinal(false);
                 $(this).addClass('miss');
                 // seaBattle.checkFinal(false);
                 seaBattle.afterMiss(this);
 
                 function fun() {
                     seaBattle.randomFire();
-                    seaBattle.checkFinal(false);
+
+
                 }
 
-                setTimeout(fun, 1000);
+                setTimeout(fun, 300);
             }
 
 
