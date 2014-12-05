@@ -170,7 +170,7 @@ var seaBattle = {
                 $playerTwo = $("#playerTwo");
                 for (var g = 0; g < self.ships.length; g++) {
                     for (var n = 0; n < self.ships[g].lifeTwo.length; n++) {
-                        $playerTwo.find('.' + self.ships[g].lifeTwo[n]).addClass("ship").not('.fire');
+                        $playerTwo.find('.' + self.ships[g].lifeTwo[n]).addClass("ships").not('.fire');
 
                     }
                 }
@@ -324,10 +324,13 @@ var seaBattle = {
         $player = $("#playerOne").find("." + randomXY);
         if ($player.hasClass("ship")) {
             $player.addClass("fire");
+           /* seaBattle.checkFinal(true);
+            seaBattle.checkFinal(false);*/
+            self.message("Противник стреляет в " + randomX + "-" + randomY + " - попал!");
+
+            self.verificationAfterFire(randomXY, 1);
             seaBattle.checkFinal(true);
             seaBattle.checkFinal(false);
-            self.message("Противник стреляет в " + randomX + "-" + randomY + " - попал!");
-            self.verificationAfterFire(randomXY, 1);
             setTimeout(fun, 100);
 
         } else {

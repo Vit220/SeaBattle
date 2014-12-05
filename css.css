@@ -129,13 +129,7 @@ header h1 {
     color: #0077b3;
 }
 
-.hide{
 
-    background-color: #FFFFEF !important;
-    background: url(image/hideShips.gif) no-repeat !important;
-    background-position: center center;
-
-}
 
 .buttonSeaBattle{
     position: relative;
@@ -164,14 +158,8 @@ header h1 {
     z-index: 20;
 }
 
-.locationsRed {
-    background-color: #fe3456 !important;
-}
-/*.locations {
-    background-color: #FFFFEF !important;
-}*/
-.erorDeadZone{
-    background-color: red !important;
+.ships{
+    background-color: orange;
 }
 
 .shipsDiv{
@@ -188,6 +176,10 @@ header h1 {
         position: absolute;
         background-color: orange;
         display: block;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
     }
 
 
@@ -400,7 +392,6 @@ header h1 {
 .one {
     background: url(image/ship1.gif) no-repeat;
     background-position: center center;
-    z-index: 100;
 
 
 }
