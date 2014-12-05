@@ -15,7 +15,7 @@ body {
     top: 10%;
     left: 38%;
 }
-#topic p {
+    #topic p {
     font-family: 'Times New Roman', Times, serif;
     font-size: 70%;
     color: red;
@@ -65,13 +65,14 @@ body {
 }
 
 #logForSeaBattle{
-    position: absolute;
+    position: relative;
     top: 28.6%;
     left: 37.5%;
     width: 250px;
     height: 250px;
     text-align: center;
     overflow: auto;
+    z-index: 10;
     /*background-color: #FFFFEF;*/
 
 }
@@ -154,22 +155,44 @@ p {
     background-color: red !important;
 }
 
+.shipsDiv{
+    position: relative;
+    width: 100px;
+    height: 95px;
+     top: 150px;
+    left: 600px;
+    z-index: 20;
+}
+
 .shipsRemove_9 {
     position: absolute;
-    top: 20.6%;
-    left: 12%;
+    top: 0;
+    left: 28px;
     border-collapse: collapse;
-    width: 75px;
-    height: 75px;
+    width: 25px;
+    height: 25px;
 
 }
 .shipsRemove_8 {
     position: absolute;
-    top: 40.6%;
-    left: 12%;
+    top: 28px;
+    left: 28px;
     border-collapse: collapse;
-    width: 75px;
-    height: 75px;
+    width: 25px;
+    height: 25px;
+
+}
+.shipsRemove_0 {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 25px;
+    height: 95px;
+
+}
+.shipsRemoveAll {
+    background-color: orange;
 
 }
 

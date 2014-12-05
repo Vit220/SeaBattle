@@ -7,6 +7,8 @@ var dragManager = new function() {
 
     function onMouseDown(e){
         e = fixEvent(e);
+      //  moveAt(e);
+
 
         if (e.which != 1) return;
 
@@ -26,6 +28,7 @@ var dragManager = new function() {
         if (!dragObject.elem) return; // элемент не зажат
 
         e = fixEvent(e);
+       // moveAt(e);
 
         if ( !dragObject.avatar ) { // если перенос не начат...
             var moveX = e.pageX - dragObject.downX;
@@ -52,12 +55,17 @@ var dragManager = new function() {
             startDrag(e); // отобразить начало переноса
         }
 
+
         // отобразить перенос объекта при каждом движении мыши
         dragObject.avatar.style.left = e.pageX - dragObject.shiftX + 'px';
         dragObject.avatar.style.top = e.pageY - dragObject.shiftY + 'px';
 
         return false;
     }
+   /* function moveAt(e) {
+        self.style.left = e.pageX-25+'px';
+        self.style.top = e.pageY-25+'px';
+    }*/
 
     function onMouseUp(e) {
         if (dragObject.avatar) { // если перенос идет

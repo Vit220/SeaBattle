@@ -7,7 +7,7 @@
     <script src="jquery-ui/js/jquery-1.10.2.js" type="text/javascript"></script>
     <script type="text/javascript" src="lib.js"></script>
     <script type="text/javascript" src="Drag.js"></script>
-    <link type="text/css" href="jquery-ui/css/ui-lightness/jquery-ui-1.10.4.css" rel="Stylesheet" />
+    <link type="text/css" href="jquery-ui/css/ui-lightness/jquery-ui-1.10.4.css" rel="Stylesheet"/>
     <link rel="stylesheet" type="text/css" href="css.css">
     <title></title>
 </head>
@@ -21,13 +21,18 @@
     <p><a href="https://github.com/Vit220/SeaBattle">ссылка на github</a></p>
 </div>
 
+<div class="shipsDiv">
+    <div class="shipsRemove_9 shipsRemoveAll" draggable>
+    </div>
 
-<div class="shipsRemove_9 one" draggable>
+    <div class="shipsRemove_8 shipsRemoveAll" draggable>
+    </div>
+
+
+    <div class="shipsRemove_0 shipsRemoveAll" draggable>
+
+    </div>
 </div>
-
-<div class="shipsRemove_8 one" draggable>
-</div>
-
 
 <div id="playerOne" oncontextmenu="return false;">
     <table class="PlayerField">
@@ -46,7 +51,7 @@
         </tr>
         <tr>
             <td class="notToSelect">1</td>
-            <td class="1_1" ></td>
+            <td class="1_1"></td>
             <td class="1_2"></td>
             <td class="1_3"></td>
             <td class="1_4"></td>
@@ -339,204 +344,205 @@
 
 
 <script type="text/javascript">
-    window.onload = function () {
-        var $button = $("#button");
-        $button.bind('click', function () {
-            $button.css("display", "none");
-            seaBattle.placementOfShips();
+window.onload = function () {
+    var $button = $("#button");
+    // seaBattle.addClass(["1_1", "2_1", "3_1", "4_1"], 4, $("#playerTwo"),[1, false]  , "#playerOne");
+    $button.on('click', function () {
+        $button.css("display", "none");
+        seaBattle.placementOfShips();
 
 
+        var $table = $("#playerTwo").find('table td').not('.notToSelect').not('.deadZone');
+        $table.on('click', function () {
+
+            var numbXY = $(this).attr("class").split(' ', 1);
 
 
-            var $table = $("#playerTwo").find('table td').not('.notToSelect').not('.deadZone');
-            $table.bind('click', function () {
+            if (seaBattle.arrShips("life", numbXY[0], "#playerTwo")) {
+                $(this).addClass('fire');
 
-                var numbXY = $(this).attr("class").split(' ', 1);
+                seaBattle.verificationAfterFire(this, 2);
+                seaBattle.checkFinal(true);
+            } else {
+                $(this).addClass('miss');
+                // seaBattle.checkFinal(false);
+                seaBattle.afterMiss(this);
 
-
-                if (seaBattle.arrShips("life", numbXY[0], "#playerTwo")) {
-                    $(this).addClass('fire');
-
-                    seaBattle.verificationAfterFire(this, 2);
-                    seaBattle.checkFinal(true);
-                } else {
-                    $(this).addClass('miss');
-                    // seaBattle.checkFinal(false);
-                    seaBattle.afterMiss(this);
-
-                    function fun() {
-                        seaBattle.randomFire();
-                        seaBattle.checkFinal(false);
-                    }
-
-                    setTimeout(fun, 100);
+                function fun() {
+                    seaBattle.randomFire();
+                    seaBattle.checkFinal(false);
                 }
 
+                setTimeout(fun, 100);
+            }
 
-            });
+
         });
-    };
-    /*var $tableOne = $("#playerOne").find('table td').not('.notToSelect').not('.deadZone');
-
-    var aaa = function (){
-        var $tableOne = null;
-       return $tableOne = $("#playerOne").find('table td').not('.notToSelect').not('.deadZone');
-    };
-
-    $(".shipsRemove").on('click', function () {
-        $(function() {
-            $( ".shipsRemove" ).draggable({ revert: "invalid" });
-            $("#playerOne").find('table td').not('.notToSelect').not('.deadZone').droppable({
-                activeClass: "ui-state-default",
-                hoverClass: "ui-state-hover",
-                drop: function( event, ui ) {
-                    $( this )
-                            .addClass( "one" );
-                    var coordinates = $(this).attr("class").split(' ', 1);
-                    seaBattle.ships[9].life.push(coordinates.toString());
-                    console.log("9 - " + seaBattle.ships[9].life);
-                    seaBattle.deadZone(9, 1, "#playerOne");
-
-                    ui.draggable.remove();
-
-                }
-            });
-        });
-
     });
-   $(".shipsRemove8").on('click', function () {
-        $(function() {
-            $( ".shipsRemove8" ).draggable({ revert: "invalid" });
-            aaa().droppable({
-                activeClass: "ui-state-default",
-                hoverClass: "ui-state-hover",
-                drop: function( event, ui ) {
-                    $( this )
-                            .addClass( "one" );
-                    var coordinates = $(this).attr("class").split(' ', 1);
-                    seaBattle.ships[8].life.push(coordinates.toString());
-                    console.log("9 - " + seaBattle.ships[8].life);
-                    seaBattle.deadZone(8, 1, "#playerOne");
-                    ui.draggable.remove();
+};
+/*var $tableOne = $("#playerOne").find('table td').not('.notToSelect').not('.deadZone');
 
-                }
-            });
-        });
+ var aaa = function (){
+ var $tableOne = null;
+ return $tableOne = $("#playerOne").find('table td').not('.notToSelect').not('.deadZone');
+ };
 
-    });*/
+ $(".shipsRemove").on('click', function () {
+ $(function() {
+ $( ".shipsRemove" ).draggable({ revert: "invalid" });
+ $("#playerOne").find('table td').not('.notToSelect').not('.deadZone').droppable({
+ activeClass: "ui-state-default",
+ hoverClass: "ui-state-hover",
+ drop: function( event, ui ) {
+ $( this )
+ .addClass( "one" );
+ var coordinates = $(this).attr("class").split(' ', 1);
+ seaBattle.ships[9].life.push(coordinates.toString());
+ console.log("9 - " + seaBattle.ships[9].life);
+ seaBattle.deadZone(9, 1, "#playerOne");
 
- /*   $('body').keyup(function(){
-        if(event.keyCode==16)
-        {
-            console.log(event.keyCode);
+ ui.draggable.remove();
 
-            return false;
-        }
-    });
-*/
- /*   $(".shipsRemove_9").keyup(function (e) {
-        if ((e.which == 16)) {
-            console.log(e.which);
-            ///$tableOne.removeClass("locationsRed");
-            // side = !side;
-            // seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
-            return false;
-        }
+ }
+ });
+ });
 
-    });
-*/
+ });
+ $(".shipsRemove8").on('click', function () {
+ $(function() {
+ $( ".shipsRemove8" ).draggable({ revert: "invalid" });
+ aaa().droppable({
+ activeClass: "ui-state-default",
+ hoverClass: "ui-state-hover",
+ drop: function( event, ui ) {
+ $( this )
+ .addClass( "one" );
+ var coordinates = $(this).attr("class").split(' ', 1);
+ seaBattle.ships[8].life.push(coordinates.toString());
+ console.log("9 - " + seaBattle.ships[8].life);
+ seaBattle.deadZone(8, 1, "#playerOne");
+ ui.draggable.remove();
 
-    document.onkeydown = function(e) {
-        e = e || window.event;
+ }
+ });
+ });
 
-        if ((e.keyCode == 82)) {
-            console.log(e.keyCode);
-        }
+ });*/
 
-    };
+/*   $('body').keyup(function(){
+ if(event.keyCode==16)
+ {
+ console.log(event.keyCode);
+
+ return false;
+ }
+ });
+ */
+/*   $(".shipsRemove_9").keyup(function (e) {
+ if ((e.which == 16)) {
+ console.log(e.which);
+ ///$tableOne.removeClass("locationsRed");
+ // side = !side;
+ // seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
+ return false;
+ }
+
+ });
+ */
+var directionXY = true; //направление корабля в ручной растановке по умолчанию вверх
+
+document.onkeydown = function (e) {
+    e = e || window.event;
+
+    if ((e.keyCode == 82)) {
+        console.log(e.keyCode);
+        directionXY = false;
+    }
+
+};
 
 
-    ( function (){$("#playerOne").find('table td').not('.notToSelect').attr('droppable' , 'droppable');}());
-    dragManager.onDragCancel = function(dragObject) {
+( function () {
+    $("#playerOne").find('table td').not('.notToSelect').attr('droppable', 'droppable');
+}());
+dragManager.onDragCancel = function (dragObject) {
 
     /*    $("#playerOne").keyup(function (e) {
-            if ((e.which == 16)) {
-                console.log(e.which);
-                ///$tableOne.removeClass("locationsRed");
-                // side = !side;
-                // seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
-                return false;
-            }
-
-        });
-*/
-        dragObject.avatar.rollback();
-    };
-
-    dragManager.onDragEnd = function(dragObject, dropElem) {
-        console.log(dragObject);
-
-        if($(dropElem).hasClass("deadZone")){
-            return dragObject.avatar.rollback();
-        }
-
-
-        var $dragObject = $(dragObject.elem).attr('class');
-        console.log($dragObject);
-
-        seaBattle.locationShips(dragObject,dropElem, $dragObject);
-
-
-    };
-
-
-
-
-   /* $(function() {
-        $( ".shipsRemove8" ).draggable({ revert: "invalid" });
-        aaa().droppable({
-            activeClass: "ui-state-default",
-            hoverClass: "ui-state-hover",
-            drop: function( event, ui ) {
-                $( this )
-                        .addClass( "one" );
-                var coordinates = $(this).attr("class").split(' ', 1);
-                seaBattle.ships[8].life.push(coordinates.toString());
-                console.log("8 - " + seaBattle.ships[8].life);
-                seaBattle.deadZone(8, 1, "#playerOne");
-                ui.draggable.remove();
-            }
-        });
-    });*/
-
-    /*   $(".one").draggable({ revert: "invalid" });
-     $tableOne.droppable();*/
-
-
-    /* var side = false;                                                            //в какой плоскости корабль
-     $tableOne.mouseenter(function(){
-     seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
-     });
-     $tableOne.mousedown(function (e) {
-     if ((e.which == 3)) {
+     if ((e.which == 16)) {
      console.log(e.which);
-     $tableOne.removeClass("locationsRed");
-     side = !side;
-     seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
+     ///$tableOne.removeClass("locationsRed");
+     // side = !side;
+     // seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
      return false;
      }
 
      });
-     $tableOne.mouseleave(function(){
-     seaBattle.locationShips($(this).attr("class").split(' ', 1), false, side);
+     */
+    dragObject.avatar.rollback();
+};
 
-     });*/
+dragManager.onDragEnd = function (dragObject, dropElem) {
+    console.log(dragObject);
+
+    if ($(dropElem).hasClass("deadZone")) {
+        return dragObject.avatar.rollback();
+    }
 
 
-    // $tableOne.keypress(function(){
-    ///    seaBattle.locationShips($(this).attr("class").split(' ', 1), false);
+    var $dragObject = $(dragObject.elem).attr('class');
+    console.log($dragObject);
 
-    // });
+    seaBattle.locationShips(dragObject, dropElem, $dragObject);
+
+
+};
+
+
+/* $(function() {
+ $( ".shipsRemove8" ).draggable({ revert: "invalid" });
+ aaa().droppable({
+ activeClass: "ui-state-default",
+ hoverClass: "ui-state-hover",
+ drop: function( event, ui ) {
+ $( this )
+ .addClass( "one" );
+ var coordinates = $(this).attr("class").split(' ', 1);
+ seaBattle.ships[8].life.push(coordinates.toString());
+ console.log("8 - " + seaBattle.ships[8].life);
+ seaBattle.deadZone(8, 1, "#playerOne");
+ ui.draggable.remove();
+ }
+ });
+ });*/
+
+/*   $(".one").draggable({ revert: "invalid" });
+ $tableOne.droppable();*/
+
+
+/* var side = false;                                                            //в какой плоскости корабль
+ $tableOne.mouseenter(function(){
+ seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
+ });
+ $tableOne.mousedown(function (e) {
+ if ((e.which == 3)) {
+ console.log(e.which);
+ $tableOne.removeClass("locationsRed");
+ side = !side;
+ seaBattle.locationShips($(this).attr("class").split(' ', 1), true, side);
+ return false;
+ }
+
+ });
+ $tableOne.mouseleave(function(){
+ seaBattle.locationShips($(this).attr("class").split(' ', 1), false, side);
+
+ });*/
+
+
+// $tableOne.keypress(function(){
+///    seaBattle.locationShips($(this).attr("class").split(' ', 1), false);
+
+// });
 
 
 </script>
