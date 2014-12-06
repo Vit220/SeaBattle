@@ -94,7 +94,7 @@ var seaBattle = {
             td = param.className.split(" "),
             miss = td[0].split("_");
 
-        self.message("Вы стреляете в " + miss[0] + "-" + miss[1] + " - промазали!", 1);
+        self.message("Вы стреляете в " + self.numberInletters(miss[0]) + "-" + miss[1] + " - промазали!", false);
     },
 
     verificationAfterFire: function (param, playerOneOrTwo) {                                                           //добавляет промахи вокруг убитого коробля
@@ -112,7 +112,7 @@ var seaBattle = {
                     if ($(td).hasClass(self.ships[i].lifeTwo[j])) {
 
                         var message = self.ships[i].lifeTwo[j].split("_");
-                        self.message("Вы стреляете в " + message[0] + "-" + message[1] + " - попали!", 1);
+                        self.message("Вы стреляете в " + self.numberInletters(message[0]) + "-" + message[1] + " - попали!", false);
 
                         self.ships[i].lifeTwo[j] = 0;
                         arrZero = self.checkForZeroArray(self.ships[i].lifeTwo);
@@ -326,7 +326,8 @@ var seaBattle = {
             $player.addClass("fire");
            /* seaBattle.checkFinal(true);
             seaBattle.checkFinal(false);*/
-            self.message("Противник стреляет в " + randomX + "-" + randomY + " - попал!");
+            console.log(randomX);
+            self.message("Противник стреляет в " + self.numberInletters(randomX) + "-" + randomY + " - попал!", true);
 
             self.verificationAfterFire(randomXY, 1);
             self.checkFinal(true);
@@ -337,9 +338,57 @@ var seaBattle = {
             self.checkFinal(true);
             self.checkFinal(false);
             $player.addClass("miss");
-            self.message("Противник стреляет в " + randomX + "-" + randomY + " - промазал!");
+            console.log(randomX);
+            //var fff = self.numberInletters(randomX);
+
+            //console.log(fff);
+            self.message("Противник стреляет в " + self.numberInletters(randomX) + "-" + randomY + " - промазал!", true);
             if (!wounded) {                                                                                              //если корабль убит весь
                 self.tryCoordinates = [];
+            }
+        }
+    },
+
+    numberInletters: function(number){
+        var numb,
+            letter;
+        if(typeof number == "string"){
+           numb = parseInt(number, 10);
+        }else{
+            numb = number;
+        }
+
+
+        switch (numb){
+            case 1:{
+                return letter = "A";
+            }
+            case 2:{
+                return letter = "Б";
+            }
+            case 3:{
+                return letter = "В";
+            }
+            case 4:{
+                return letter = "Г";
+            }
+            case 5:{
+                return letter = "Д";
+            }
+            case 6:{
+                return letter = "Е";
+            }
+            case 7:{
+                return letter = "Ж";
+            }
+            case 8:{
+                return letter = "З";
+            }
+            case 9:{
+                return letter = "И";
+            }
+            case 10:{
+                return letter = "К";
             }
         }
     },
@@ -356,7 +405,7 @@ var seaBattle = {
         firstP = div.getElementsByTagName('p')[0];
         p.innerHTML = text;
         line.innerHTML = "---------------------------------";
-        if (param === 1) {
+        if (!param) {
             p.className = "colorBrown";
         } else {
             p.className = "colorCoral";
@@ -502,7 +551,7 @@ var seaBattle = {
 
     addClass: function (lifeOneOrTwo, maxLengthShip, $player, test, playerOneOrTwo) {
 
-        console.log(maxLengthShip);
+       // console.log(maxLengthShip);
         var one = lifeOneOrTwo[0],
             two = lifeOneOrTwo[1],
             three = lifeOneOrTwo[2],
@@ -612,7 +661,7 @@ var seaBattle = {
         }
         //console.log(numberShip);
         arr = lifeOneOrTwo.slice();
-        console.log(arr);
+        //console.log(arr);
         area = deadAreaOneOrTwo;
         function test(numbersId, area, playerOneOrTwo) {
             var arr,
@@ -847,17 +896,19 @@ var seaBattle = {
 
 
 
-    }/*,
-    restartGame: function(){
+    },
+    restartGame: function(documentFragment){
         var self = this;
 
         for(var i = 0; i < self.ships.length; i++){
             self.ships[i].life = [];
         }
 
-        $("#playerOne")
+        $("#playerOne").find(".PlayerField").remove();
+        $("#playerOne").append(documentFragment);
 
-    }*/
+
+    }
 
 
 };
