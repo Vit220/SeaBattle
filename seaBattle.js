@@ -896,7 +896,7 @@ var seaBattle = {
 
 
 
-    },
+    }/*,
     restartGame: function(documentFragment){
         var self = this;
 
@@ -909,7 +909,7 @@ var seaBattle = {
 
 
     }
-
+*/
 
 };
 

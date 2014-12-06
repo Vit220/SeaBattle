@@ -79,7 +79,13 @@ var dragManager = new function() {
     function onMouseUp(e) {
         if (dragObject.avatar) { // если перенос идет
             e = fixEvent(e);
-            finishDrag(e);
+            if (e.which != 1 ) { // не левой кнопкой
+                return false;
+            }
+            //if(e.which == 1){
+                finishDrag(e);
+            //}
+
         }
 
         // перенос либо не начинался, либо завершился
