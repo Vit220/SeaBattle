@@ -759,20 +759,34 @@ var seaBattle = {
 
         var self = this,
             $className = className,
+            $class,
             coorXY,
             coorX,
             coorY,
             numbXY,
-            maxLength;
-
-
+            maxLength,
+            height,
+            width,
+            flat,
+            xOrY;
+        flat = true;
+        $class = $("."+className);
         $className = parseInt(className.split("_")[1], 10);
 
-        console.log($className);
+        height = parseInt($class.css('height'));
+        width = parseInt($class.css('width'));
 
         function addShips(shipsLength, xOrY) {
+            var flat;
             for (var i = 1; i < shipsLength; i++) {
-                coorY++;
+                if(!xOrY){
+                    coorX++;
+                    flat = 2;
+                }else{
+                    coorY++;
+                    flat = 1;
+                }
+
                 numbXY = coorY + "_" + coorX;
                 if (self.arrShips("deadArea", numbXY, "#playerOne")) {
                     self.ships[$className].life = [];
@@ -784,7 +798,7 @@ var seaBattle = {
             dragObject.elem.style.display = 'none';
             self.deadZone($className, 1, "#playerOne");
 
-            self.addClass(self.ships[$className].life, maxLength, $("#playerOne"), [1, false], "#playerOne");
+            self.addClass(self.ships[$className].life, maxLength, $("#playerOne"), [flat, false], "#playerOne");
         }
 
         var coordinates = $(dropElem).attr("class").split(' ', 1);
@@ -794,11 +808,20 @@ var seaBattle = {
         coorX = coorXY[1];
         coorY = coorXY[0];
 
+      if(height < width){
+          xOrY = coorX;
+          flat = false;
+      }else{
+          xOrY = coorY;
+          flat = true;
+      }
+
+
         switch ($className) {
             case 0:
             {
-                if (+coorY < 8) {
-                    addShips(4);
+                if (+xOrY < 8) {
+                    addShips(4, flat);
                     break;
                 }
                 self.ships[$className].life = [];
@@ -806,8 +829,8 @@ var seaBattle = {
             }
             case 1:
             {
-                if (+coorY < 9) {
-                    addShips(3);
+                if (+xOrY < 9) {
+                    addShips(3, flat);
                     break;
                 }
                 self.ships[$className].life = [];
@@ -815,8 +838,8 @@ var seaBattle = {
             }
             case 2:
             {
-                if (+coorY < 9) {
-                    addShips(3);
+                if (+xOrY < 9) {
+                    addShips(3, flat);
                     break;
                 }
                 self.ships[$className].life = [];
@@ -824,8 +847,8 @@ var seaBattle = {
             }
             case 3:
             {
-                if (+coorY < 10) {
-                    addShips(2);
+                if (+xOrY < 10) {
+                    addShips(2, flat);
                     break;
                 }
                 self.ships[$className].life = [];
@@ -833,8 +856,8 @@ var seaBattle = {
             }
             case 4:
             {
-                if (+coorY < 10) {
-                    addShips(2);
+                if (+xOrY < 10) {
+                    addShips(2, flat);
                     break;
                 }
                 self.ships[$className].life = [];
@@ -842,8 +865,8 @@ var seaBattle = {
             }
             case 5:
             {
-                if (+coorY < 10) {
-                    addShips(2);
+                if (+xOrY < 10) {
+                    addShips(2, flat);
                     break;
                 }
                 self.ships[$className].life = [];

@@ -7,8 +7,10 @@ var dragManager = new function() {
 
 
 
+
     function onMouseDown(e){
         e = fixEvent(e);
+
         console.log("drag");
         $(document).mousedown(function (e) {
           // console.log($(document));
@@ -28,16 +30,24 @@ var dragManager = new function() {
 
                 }*/
                // var arr = e.target.className;
-               console.log(e.target.className);
+              // console.log(e.target);
                 var $aa = $("."+ e.target.className);
 
-                console.log($aa.css('height'));
+                //console.log($aa.css('height'));
 
                 var bb = $aa.css('height');
                 var cc = $aa.css('width');
 
                 $aa.css('height', cc)
                     .css('width', bb);
+                /*if($(e.target).hasClass("test")){
+                    $(e.target).removeClass("test");
+                }else{
+                    $(e.target).addClass("test");
+                }*/
+
+
+
 
 
 
@@ -131,7 +141,7 @@ var dragManager = new function() {
         var dropElem = findDroppable(e);
 
         if (!dropElem) {
-            self.onDragCancel(dragObject);
+            self.onDragEnd(dragObject, dropElem);
         } else {
             self.onDragEnd(dragObject, dropElem);
         }
