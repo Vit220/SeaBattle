@@ -3,7 +3,10 @@ var dragManager = new function() {
 
     var dragObject = {};
 
-    var self = this;
+    var self = this,
+        $class,
+        height,
+        width;
 
 
 
@@ -15,49 +18,14 @@ var dragManager = new function() {
         $(document).mousedown(function (e) {
           // console.log($(document));
             if ((e.which == 3)) {
-               // console.log(e.target.className);
-               /*var arr = e.target.className.split(' ');
-                console.log(arr[0]);
 
-                switch (arr[0]){
-                    case "shipsRemove_0":
-                        //e.target.classList.add('click_0');
-                        e.target.classList.toggle('shipsRemove_0');
-                        break;
-                    default:
+                $class = $("."+ e.target.className);
 
+                height = $class.css('height');
+                width = $class.css('width');
 
-
-                }*/
-               // var arr = e.target.className;
-              // console.log(e.target);
-                var $aa = $("."+ e.target.className);
-
-                //console.log($aa.css('height'));
-
-                var bb = $aa.css('height');
-                var cc = $aa.css('width');
-
-                $aa.css('height', cc)
-                    .css('width', bb);
-                /*if($(e.target).hasClass("test")){
-                    $(e.target).removeClass("test");
-                }else{
-                    $(e.target).addClass("test");
-                }*/
-
-
-
-
-
-
-/*
-                e.target.classList.add('click_0');
-                e.target.classList.toggle('shipsRemove_0');
-               // e.target.classList.remove('shipsRemove_0');
-
-                console.log( e.target.classList.contains("click_0") );
-*/
+                $class.css('height', width)
+                    .css('width', height);
 
                 return false;
             }
