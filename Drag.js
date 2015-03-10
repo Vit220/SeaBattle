@@ -5,19 +5,53 @@ var dragManager = new function() {
 
     var self = this;
 
+
+
     function onMouseDown(e){
         e = fixEvent(e);
-      //  moveAt(e);
-       /* console.log(e);
-        document.onkeydown = function (e) {
-            e = e || window.event;
+        console.log("drag");
+        $(document).mousedown(function (e) {
+          // console.log($(document));
+            if ((e.which == 3)) {
+               // console.log(e.target.className);
+               /*var arr = e.target.className.split(' ');
+                console.log(arr[0]);
 
-            if ((e.keyCode == 82)) {
-                console.log(e);
-                // directionXY = false;
+                switch (arr[0]){
+                    case "shipsRemove_0":
+                        //e.target.classList.add('click_0');
+                        e.target.classList.toggle('shipsRemove_0');
+                        break;
+                    default:
+
+
+
+                }*/
+               // var arr = e.target.className;
+               console.log(e.target.className);
+                var $aa = $("."+ e.target.className);
+
+                console.log($aa.css('height'));
+
+                var bb = $aa.css('height');
+                var cc = $aa.css('width');
+
+                $aa.css('height', cc)
+                    .css('width', bb);
+
+
+
+/*
+                e.target.classList.add('click_0');
+                e.target.classList.toggle('shipsRemove_0');
+               // e.target.classList.remove('shipsRemove_0');
+
+                console.log( e.target.classList.contains("click_0") );
+*/
+
+                return false;
             }
-
-        };*/
+        });
 
         if (e.which != 1) return;
 

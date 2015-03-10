@@ -22,7 +22,6 @@
 </header>
 
 
-
 <div id="playerOne" oncontextmenu="return false;">
     <table class="PlayerField">
         <tr>
@@ -324,7 +323,6 @@
 </div>
 
 
-
 <div class="buttonSeaBattle">
 <span>
     <input id="buttonRandom" type="button" value=" Разместить случайно ">
@@ -374,13 +372,12 @@ window.onload = function () {
             $table = $("#playerTwo").find('table td').not('.notToSelect').not('.deadZone');
 
 
-
     ( function () {
         $("#playerOne").find('table td').not('.notToSelect').attr('droppable', 'droppable');
     }());
 
     //var documentFragment = document.createDocumentFragment();
-    var aaa = $("#playerOne").find(".PlayerField");
+    //var aaa = $("#playerOne").find(".PlayerField");
     //documentFragment.appendChild(aaa);
 
 
@@ -394,7 +391,7 @@ window.onload = function () {
             return;
         }
         var $dragObject = $(dragObject.elem).attr('class');
-        console.log($dragObject);
+        //console.log(flat);
         seaBattle.locationShips(dragObject, dropElem, $dragObject);
     };
 
@@ -410,7 +407,7 @@ window.onload = function () {
         location.reload();
     });
     $buttonRandom.on('click', function () {
-       //seaBattle.restartGame(aaa);
+        //seaBattle.restartGame(aaa);
         $buttonRandom.css("display", "none");
         $buttonStartGame.css("display", "block");
         $restartGame.css("display", "block");
@@ -421,20 +418,28 @@ window.onload = function () {
 
     var letsGoSeaBattle = function () {
         $table.on('click', function () {
-
+        //console.log(this);
 
             var numbXY = $(this).attr("class").split(' ', 1);
+            // var playerTwo = document.getElementById("playerTwo");
+            // var playerTwo = $("#playerTwo");
+           /* if ($("#playerTwo").find('table td').hasClass("miss")) {
 
+
+
+                alert("dfgd");
+                return false;
+            }*/
 
             if (seaBattle.arrShips("life", numbXY[0], "#playerTwo")) {
-             /*   seaBattle.checkFinal(true);
-                seaBattle.checkFinal(false);*/
+                /*   seaBattle.checkFinal(true);
+                 seaBattle.checkFinal(false);*/
                 $(this).addClass('fire');
 
                 seaBattle.verificationAfterFire(this, 2);
 
             } else {
-               // seaBattle.checkFinal(false);
+                // seaBattle.checkFinal(false);
                 $(this).addClass('miss');
                 // seaBattle.checkFinal(false);
                 seaBattle.afterMiss(this);
@@ -526,8 +531,6 @@ window.onload = function () {
  });
  */
 //var directionXY = true; //направление корабля в ручной растановке по умолчанию вверх
-
-
 
 
 /* $(function() {

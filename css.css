@@ -162,6 +162,20 @@ header h1 {
     background-color: orange;
 }
 
+.click {
+    top: 0;
+    left: 0;
+    width: 95px;
+    height: 25px
+    position: absolute;
+    background-color: orange;
+    display: block;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
 .shipsDiv{
     position: relative;
     width: 170px;
